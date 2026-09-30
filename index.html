@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cumpleaños de Ariam — Invitación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Capa de fondo: desierto + imágenes flotantes animadas (reemplázalas por tus imágenes de Grogu) -->
+  <div class="wallpaper" aria-hidden="true">
+    <img class="floater f1" src="images/grogu_.png" alt="">
+    <img class="floater f2" src="images/grogu_.png" alt="">
+    <img class="floater f3" src="images/grogu_.png" alt="">
+    <img class="floater f4" src="images/grogu_.png" alt="">
+    <img class="floater f5" src="images/grogu_.png" alt="">
+    <img class="floater f6" src="images/grogu_.png" alt="">
+    <img class="floater f7" src="images/grogu_.png" alt="">
+    <img class="floater f8" src="images/grogu_.png" alt="">
+  </div>
+
+  <!-- Pantalla de sobre / apertura -->
+  <section id="envelope-screen" class="envelope-screen">
+    <p class="envelope-eyebrow">Una aventura te espera</p>
+
+    <div class="envelope" id="envelope">
+      <div class="envelope-glow" aria-hidden="true"></div>
+      <div class="envelope-back"></div>
+      <div class="envelope-flap"></div>
+      <div class="envelope-body"></div>
+
+      <button class="seal" id="sigilBtn" aria-label="Toca para abrir la invitación">
+        <svg viewBox="0 0 100 100" class="seal-svg">
+          <circle cx="50" cy="50" r="47" class="seal-ring-outer"/>
+          <circle cx="50" cy="50" r="38" class="seal-ring-inner"/>
+          <text x="50" y="59" class="seal-text" text-anchor="middle">A</text>
+        </svg>
+      </button>
+    </div>
+
+    <p class="envelope-hint">Toca para abrir</p>
+  </section>
+
+  <div class="burst" id="burst" aria-hidden="true"></div>
+
+  <main id="invitation" class="invitation">
+
+    <button class="music-toggle" id="musicToggle" aria-label="Activar o pausar música">
+      <span class="music-icon">♪</span>
+    </button>
+
+    <audio id="bgMusic" loop preload="none">
+      <source src="audio/Lullaby Baby Trio - Star Wars Main Theme - (256 Kbps).mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-frame">
+        <div class="image-slot hero-image-slot">
+          <img id="heroImg" src="images/hero.jpg" alt="Foto de Ariam" loading="lazy">
+        </div>
+      </div>
+
+      <p class="hero-eyebrow">Que la fuerza nos acompañe celebrando con</p>
+      <h1 class="hero-name">Ariam</h1>
+
+      <div class="hero-age-badge">
+        <span class="hero-age-num">5</span>
+        <span class="hero-age-label">años</span>
+      </div>
+
+      <div class="hero-date-row">
+        <span class="hero-date-pill">8</span>
+        <span class="hero-date-text">de Octubre</span>
+      </div>
+
+      <p class="hero-tagline"></p>
+
+      <svg class="scroll-cue" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v14m0 0l-6-6m6 6l6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </section>
+
+    <!-- Detalle día / hora -->
+    <section class="section detail-section">
+      <p class="section-intro">Guarda la fecha</p>
+      <div class="detail-grid">
+        <div class="detail-card">
+          <span class="detail-label">Día</span>
+          <span class="detail-value">8</span>
+          <span class="detail-sub">Octubre</span>
+        </div>
+        <div class="detail-card">
+          <span class="detail-label">Hora</span>
+          <!-- EDITAR: cuando definan la hora, cambien HORA_DEFINIDA y FECHA_EVENTO en js/script.js -->
+          <span class="detail-value detail-value--small" id="horaTexto">Por confirmar</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Itinerario -->
+    <section class="section itinerary-section">
+      <p class="section-intro">Itinerario</p>
+      <ol class="itinerary-list">
+        <li class="itinerary-item">
+          <time datetime="16:30">4:30 p. m.</time>
+          <span>Recepción de invitados</span>
+        </li>
+        <li class="itinerary-item">
+          <time datetime="17:00">5:00 p. m.</time>
+          <span>Juegos inflables y caritas pintadas</span>
+        </li>
+        <li class="itinerary-item">
+          <time datetime="18:00">6:00 p. m.</time>
+          <span>Show</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Cuenta regresiva -->
+    <section class="section countdown-section">
+      <p class="section-intro">Cuenta regresiva</p>
+      <div class="countdown" id="countdown">
+        <div class="cd-unit"><span class="cd-num" id="cd-days">00</span><span class="cd-label">días</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-hours">00</span><span class="cd-label">hrs</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">min</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">seg</span></div>
+      </div>
+    </section>
+
+    <!-- Ubicación -->
+    <section class="section location-section">
+      <p class="section-intro">Punto de encuentro</p>
+      <div class="location-card">
+        <p class="location-address">Local Comunal Los Sauces</p>
+
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d487.7038802312844!2d-76.98362977603932!3d-12.068887495614744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c7d8de10f3a9%3A0xa83a6036469f2420!2sLocal%20Comunal%20Los%20Sauces!5e0!3m2!1ses-419!2spe!4v1790294427366!5m2!1ses-419!2spe"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+
+        <a class="location-link" href="https://maps.app.goo.gl/1DAetXnMuc4ATocx7" target="_blank" rel="noopener">Abrir en Google Maps ↗</a>
+      </div>
+    </section>
+
+    <!-- Calendario -->
+    <section class="section calendar-section">
+      <h3 class="calendar-title">Fecha</h3>
+      <div id="miniCalendar" class="calendar" aria-label="Calendario" role="application"></div>
+      <div class="calendar-pills">
+        <div class="pill" id="pill-day">--</div>
+        <div class="pill" id="pill-date">--</div>
+        <div class="pill" id="pill-time">--</div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="section rsvp-section">
+      <p class="section-intro">Confirma tu asistencia para tener lista tu sorpresita</p>
+      <h3 class="rsvp-title">¿Nos acompañas?</h3>
+
+      <form id="rsvpForm" class="rsvp-form" novalidate>
+        <!-- Anti-spam (campo oculto: si un bot lo llena, Formspree descarta el envío) -->
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
+
+        <label class="field">
+          <span class="field-label">Nombre del niño o niña</span>
+          <input type="text" name="nombre" required autocomplete="off" placeholder="Escribe el nombre">
+        </label>
+
+        <p class="form-error" id="formError" role="alert" hidden></p>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Enviar confirmación</button>
+        <p class="form-note">Tu respuesta llega directo a quien organiza esta fiesta.</p>
+      </form>
+
+      <div class="rsvp-success" id="rsvpSuccess" hidden>
+        <div class="success-badge" aria-hidden="true">
+          <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24" class="sb-circle"/><path d="M15 27l8 8 15-16" class="sb-check"/></svg>
+        </div>
+        <h4 class="success-title" id="successTitle">¡Confirmación enviada!</h4>
+        <p class="success-text" id="successText">Nos vemos el 8 de octubre.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Hecho con amor para Ariam</p>
+    </footer>
+
+  </main>
+
+<script src="js/script.js"></script>
+</body>
+</html>
